@@ -30,4 +30,10 @@ export default {
       },
     ]
   }],
+  // proxy: {
+  //   '/dev': {
+  //     target: 'http://mock-api.com/0ynW5Pz6.mock/get_question_answer_list',
+  //     changeOrigin: true,
+  //   },
+  // },
 };
