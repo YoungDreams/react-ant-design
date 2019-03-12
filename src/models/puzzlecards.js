@@ -1,5 +1,6 @@
 import request from '../util/request';
 import { resolve } from 'url';
+import { message } from 'antd';
 
 const delay = (millisecond) => {
   return new Promise((resolve) => {
@@ -17,15 +18,20 @@ export default {
     *queryInitCards(_, sagaEffects) {
       const { call, put } = sagaEffects;
       // mock api, http://mock-api.com/
-      const endPointURI = 'http://mock-api.com/0ynW5Pz6.mock/get_question_answer_list';
-      // const endPointURI = '/0ynW5Pz6.mock/get_question_answer_list';
-      const puzzle = yield call(request, endPointURI);
-      yield put({ type: 'addNewCard', payload: puzzle });
+      // const endPointURI = 'http://mock-api.com/0ynW5Pz6.mock/get_question_answer_list';
+      const endPointURI = '/dev/random_joke';
+      try{
+        const puzzle = yield call(request, endPointURI);
+        yield put({ type: 'addNewCard', payload: puzzle });
 
-      yield call(delay, 3000);
+        yield call(delay, 3000);
 
-      const puzzle2 = yield call(request, endPointURI);
-      yield put({ type: 'addNewCard', payload: puzzle2 });
+        const puzzle2 = yield call(request, endPointURI);
+        yield put({ type: 'addNewCard', payload: puzzle2 });
+      }
+      catch(e) {
+        message.error('数据获取失败');
+      }
     }
   },
   reducers: {

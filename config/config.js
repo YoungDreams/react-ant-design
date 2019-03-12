@@ -5,6 +5,13 @@ export default {
       dva: true,
     }],
   ],
+  // 若已有配置
+  outputPath: "./build",
+
+  // 加入 theme 定义
+  theme: {
+    "@primary-color": "#30b767", // 绿色
+  },
   routes: [{
     path: '/',
     component: '../layout',
@@ -18,7 +25,15 @@ export default {
       },
       {
         path: '/helloworld',
-        component: 'Helloworld'
+        component: 'index'
+      },
+      {
+        path: '/css-modules-with-less',
+        component: './css-modules-with-less/index'
+      },
+      {
+        path: '/css-modules-with-antd',
+        component: './css-modules-with-antd/index'
       },
       {
         path: '/dashboard',
@@ -27,6 +42,9 @@ export default {
           { path: '/dashboard/monitor', component: 'Dashboard/Monitor' },
           { path: '/dashboard/workplace', component: 'Dashboard/Workplace' }
         ]
+      },
+      {
+        path: 'list', component: '../pages/list'
       },
     ]
   }],
